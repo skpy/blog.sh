@@ -1,0 +1,4 @@
+DOCROOT=/var/www/html
+URL=https://example.com
+DESCRIPTION="I have no idea"
+SRC=/home/user/uploads
