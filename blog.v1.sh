@@ -1,4 +1,9 @@
 #!/bin/bash
+# THIS SCRIPT IS NO LONGER USED
+# but I'm keeping it in the repo because it's a useful
+# historical artifact, and digging out old versions from a 
+# git history is more trouble than it's worth for me.
+
 # This script publishes content to my blog.
 
 # load the config
