@@ -27,9 +27,11 @@ A config file is mandatory. Copy the provided `config.SAMPLE` to `config` and ed
 ## Custom Functions
 You may define custom functions inside the config file to alter the execution of some parts of this script. 
 
-`ARCHIVE_FUNC` is the name of a function that you declare in your config file.  This function will be invoked when building the archive list of all content. By default, `blog.sh` will create a full list of all content.  You can override this in your own function.
+`FILTER_FUNC` will run on the input Markdown file(s) before `blog.sh` does anything else. This is a good place to do any content sanitization that you might need.
 
-`HOME_FUNC` is the name of a function tha you declare in your config file to alter how the home page is generated. By default, `blog.sh` will create a list of `HOMECOUNT` items, newest first.
+`ARCHIVE_FUNC` will be invoked when building the archive list of all content. By default, `blog.sh` will create a full list of all content.  You can override this in your own function.
+
+`HOME_FUNC` will run to generate the home page. By default, `blog.sh` will create a list of `HOMECOUNT` items, newest first.
 
 ## Usage
 `blog.sh` requires a command line argument to tell it what config file to use. If no option is provided, it will look for a file named `config` in the current working directory.  If none is found, the script will exit with an error.

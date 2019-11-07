@@ -4,3 +4,29 @@ URL=https://example.com
 HOMECOUNT=10
 RSSCOUNT=10
 DESCRIPTION="I have no idea"
+
+FILTER_FUNC="demo_filter"
+HOME_FUNC="demo_home"
+ARCHIVE_FUNC="demo_archive"
+
+function demo_filter {
+  # change all instances of Linux to GNU/Linux
+  sed -i 's@ Linux@ GNU/Linux@g' $i
+}
+
+function demo_home {
+  # just copy the most recent item to home
+  LATEST=$(head -n 1 ${DOCROOT}/permalinks.txt)
+  cp $DOCROOT/$LATEST.md $DOCROOT/index.md
+}
+
+function demo_archive {
+  # sort posts and notes into separate files
+  permalink=$1
+  title=$2
+  if [[ -n "$title" ]]; then
+    sed -i "1s@^@* [${title}]${permalink}\n@" $DOCROOT/posts.md
+  else
+    sed -i "1s@^@* [${permalink}]${permalink}\n@" $DOCROOT/notes.md
+  fi
+}

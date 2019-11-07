@@ -46,6 +46,11 @@ COUNT=0
 for SOURCE in ${SRC}/*.md; do
   if [[ ! -e "${SOURCE}" ]]; then continue; fi
   (( COUNT=COUNT+1 ))
+  # run a custom filter over the input
+  if [[ -n "$FILTER_FUNC" ]]; then
+    # pass the input file to the filter
+    $FILTER_FUNC $SOURCE
+  fi
   TITLE=$(sed -n 's/^title: //p' $SOURCE)
   if [[ -n "${TITLE}" ]]; then
     # use the title for the permalink
