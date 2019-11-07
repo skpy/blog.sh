@@ -1,4 +1,6 @@
+SRC=/home/user/uploads
 DOCROOT=/var/www/html
 URL=https://example.com
+HOMECOUNT=10
+RSSCOUNT=10
 DESCRIPTION="I have no idea"
-SRC=/home/user/uploads
