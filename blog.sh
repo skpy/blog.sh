@@ -124,6 +124,10 @@ for i in $(head -n ${RSSCOUNT} ${DOCROOT}/permalinks.txt); do
   TITLE=$(sed -n 's/^title: //p' $FILE)
   # get the content.  Filter through pandoc to get HTML
   CONTENT=$(sed '/---/,/---/ d' $FILE | pandoc -f markdown -t html)
+  # allow a custom function to modify all of the global variables just defined
+  if [[ -n "${RSS_FUNC}" ]]; then
+    $RSS_FUNC
+  fi
   echo -n '<item>' >> $TARGET
   if [[ -n "$TITLE" ]]; then
     echo -n "<title>${TITLE}</title>" >> $TARGET
